@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Elder from "../assets/old-person.png";
+import Elder from "../assets/old-person.webp";
 import useAboutAnimation from "../hooks/useAboutAnimation";
 import "./About.scss";
 

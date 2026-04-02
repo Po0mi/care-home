@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import aboutPhoto from "../assets/about-photo.png";
+import aboutPhoto from "../assets/about-photo.webp";
 import useAboutPageAnimation from "../hooks/useAboutPageAnimation";
 import "./AboutCarePage.scss";
 

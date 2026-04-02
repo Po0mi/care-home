@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import TeamPhoto from "../assets/team-photo.jpg";
+import TeamPhoto from "../assets/team-photo.webp";
 import useJoinTeamAnimation from "../hooks/useJoinTeamAnimation";
 import "./JoinTeamPage.scss";
 

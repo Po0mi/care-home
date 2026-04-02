@@ -1,0 +1,236 @@
+// ─────────────────────────────────────────
+// Contact
+// ─────────────────────────────────────────
+.contact {
+  background: var(--ink);
+  padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 5vw, 3rem);
+  position: relative;
+  overflow: hidden;
+  font-family: var(--font-body);
+}
+
+// ── Ghost watermark ────────────────────
+.contact-bg-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-display);
+  font-size: clamp(8rem, 20vw, 18rem);
+  font-style: italic;
+  color: rgba(147, 180, 247, 0.04);
+  pointer-events: none;
+  white-space: nowrap;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  user-select: none;
+}
+
+// ── Inner ──────────────────────────────
+.contact-inner {
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+// ── Label ──────────────────────────────
+.contact-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.contact-label-line {
+  width: 22px;
+  height: 1.5px;
+  background: var(--blue-mid);
+  flex-shrink: 0;
+}
+
+.contact-label-text {
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--blue-mid);
+}
+
+// ── Heading ────────────────────────────
+.contact-heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-weight: 400;
+  color: var(--white);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.contact-heading em {
+  font-style: italic;
+  color: var(--blue-mid);
+}
+
+// ── Sub ────────────────────────────────
+.contact-sub {
+  font-size: 0.82rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.4);
+  max-width: 42ch;
+}
+
+// ── Contact Info ────────────────────────
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.contact-info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  text-align: left;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: border-color var(--transition);
+
+  &:hover {
+    border-color: rgba(147, 180, 247, 0.2);
+  }
+}
+
+.contact-info-icon {
+  width: 40px;
+  height: 40px;
+  background: rgba(147, 180, 247, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--blue-mid);
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.contact-info-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  strong {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--blue-mid);
+    margin-bottom: 2px;
+  }
+
+  span,
+  a {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    line-height: 1.4;
+    transition: color var(--transition);
+  }
+
+  a:hover {
+    color: var(--blue-mid);
+  }
+}
+
+// ── Stats ──────────────────────────────
+.contact-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 0.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.contact-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 2.5rem;
+
+  strong {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--blue-mid);
+    line-height: 1;
+    display: block;
+  }
+
+  span {
+    font-size: 0.55rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.25);
+    margin-top: 4px;
+  }
+}
+
+.contact-stat-div {
+  width: 1px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+}
+
+// ─────────────────────────────────────────
+// Responsive
+// ─────────────────────────────────────────
+@media (max-width: 640px) {
+  .contact-info-item {
+    padding: 0.75rem;
+  }
+
+  .contact-info-icon {
+    width: 32px;
+    height: 32px;
+
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  .contact-info-content {
+    span,
+    a {
+      font-size: 0.75rem;
+    }
+  }
+
+  .contact-stat {
+    padding: 0 1rem;
+  }
+
+  .contact-stat strong {
+    font-size: 1.2rem;
+  }
+
+  .contact-stat span {
+    font-size: 0.5rem;
+  }
+}

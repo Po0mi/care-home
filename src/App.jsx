@@ -1,12 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainLayout from "./layouts/Mainlayout";
 import Home from "./pages/Home";
-import AboutPage from "./pages/Aboutpage";
-// import TestimonialsPage from "./pages/Testimonialspage";
-// import OnlineCommunityPage from "./pages/OnlineCommunitypage";
-// import BookTourPage from "./pages/BookTourpage";
-// import JoinTeamPage from "./pages/JoinTeampage";
-// import ContactPage from "./pages/Contactpage";
+import AboutPage from "./pages/AboutPage";
+import JoinTeamPage from "./pages/JoinTeamPage";
+import BookTourPage from "./pages/BookTourPage";
+
 import "./App.css";
 
 function App() {
@@ -16,11 +14,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<AboutPage />} />
-          {/* <Route path="/testimonials" element={<TestimonialsPage />} /> */}
-          {/* <Route path="/community" element={<OnlineCommunityPage />} /> */}
-          {/* <Route path="/book-tour" element={<BookTourPage />} /> */}
-          {/* <Route path="/join-team" element={<JoinTeamPage />} /> */}
-          {/* <Route path="/contact" element={<ContactPage />} /> */}
+          <Route path="/careers" element={<JoinTeamPage />} />
+          <Route path="/book-tour" element={<BookTourPage />} />
         </Routes>
       </MainLayout>
     </BrowserRouter>

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Elder from "../assets/old-person.png";
+import useAboutAnimation from "../hooks/useAboutAnimation";
 import "./About.scss";
 
 const FEATURES = [
@@ -21,49 +22,55 @@ const FEATURES = [
   },
 ];
 
-const About = () => (
-  <section className="about" id="about">
-    {/* Image bleeds out right */}
-    <div className="about-image-bleed">
-      <div className="about-image-inner">
-        <img src={Elder} alt="Elderly person" />
-      </div>
-    </div>
+const About = () => {
+  const { sectionRef } = useAboutAnimation();
 
-    {/* Label */}
-    <div className="about-label">
-      <span className="about-label-text">Living & Thriving</span>
-    </div>
-
-    {/* Heading */}
-    <div className="about-heading-wrap">
-      <h2 className="about-heading">
-        A little about
-        <span className="about-heading-faded"> what we do</span> at
-        <br />
-        <em>Sycamore</em> <span className="about-heading-ghost">Cottage </span>
-        <span className="about-heading-faded">care that feels like</span>{" "}
-        <em>home.</em>
-      </h2>
-    </div>
-
-    {/* Sub copy */}
-    <p className="about-sub">
-      Our trained healthcare professionals ensure each resident has a
-      personalised, clinically relevant care plan, treating everyone as an
-      individual with a full life history.
-    </p>
-
-    {/* Features */}
-    <div className="about-features">
-      {FEATURES.map(({ title, desc }) => (
-        <div key={title} className="about-feature-item">
-          <h4 className="about-feature-title">{title}</h4>
-          <p className="about-feature-desc">{desc}</p>
+  return (
+    <section className="about" id="about" ref={sectionRef}>
+      {/* Image bleeds out right */}
+      <div className="about-image-bleed">
+        <div className="about-image-inner">
+          <img src={Elder} alt="Elderly person" />
         </div>
-      ))}
-    </div>
-  </section>
-);
+      </div>
+
+      {/* Label */}
+      <div className="about-label">
+        <span className="about-label-line" />
+        <span className="about-label-text">Living & Thriving</span>
+      </div>
+
+      {/* Heading */}
+      <div className="about-heading-wrap">
+        <h2 className="about-heading">
+          A little about
+          <span className="about-heading-faded"> what we do</span> at
+          <br />
+          <em>Sycamore</em>{" "}
+          <span className="about-heading-ghost">Cottage </span>
+          <span className="about-heading-faded">care that feels like</span>{" "}
+          <em>home.</em>
+        </h2>
+      </div>
+
+      {/* Sub copy */}
+      <p className="about-sub">
+        Our trained healthcare professionals ensure each resident has a
+        personalised, clinically relevant care plan, treating everyone as an
+        individual with a full life history.
+      </p>
+
+      {/* Features */}
+      <div className="about-features">
+        {FEATURES.map(({ title, desc }) => (
+          <div key={title} className="about-feature-item">
+            <h4 className="about-feature-title">{title}</h4>
+            <p className="about-feature-desc">{desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};
 
 export default About;

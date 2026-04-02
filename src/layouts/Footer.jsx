@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Footer.scss";
 
@@ -8,13 +7,11 @@ const NAV_COLS = [
     links: [
       { label: "Home", href: "/" },
       { label: "About Us", href: "/about" },
-      { label: "Testimonials", href: "/testimonials" },
     ],
   },
   {
     title: "Community",
     links: [
-      { label: "Online Community", href: "/community" },
       { label: "Join The Team", href: "/careers" },
       { label: "Book A Tour", href: "/book-tour" },
     ],
@@ -62,88 +59,72 @@ const SOCIAL = [
   },
 ];
 
-const Footer = () => {
-  const [email, setEmail] = useState("");
-
-  const handleSubscribe = (e) => {
-    e.preventDefault();
-    // Add email subscription logic here
-    setEmail("");
-    alert("Thank you for subscribing!");
-  };
-
-  const currentYear = new Date().getFullYear();
-
-  return (
-    <footer className="footer">
-      <div className="footer-inner">
-        {/* ── Top grid ── */}
-        <div className="footer-top">
-          {/* Brand */}
-          <div className="footer-brand">
-            <Link to="/" className="footer-logo">
-              <span className="footer-logo-mark">Sycamore</span>
-              <span className="footer-logo-sub">Cottage</span>
-            </Link>
-            <p className="footer-tagline">
-              Thoughtfully designed residential care where community, comfort,
-              and compassion converge.
-            </p>
-            <div className="footer-social">
-              {SOCIAL.map(({ label, href, icon }) => (
-                <a
-                  key={label}
-                  href={href}
-                  className="footer-social-link"
-                  aria-label={label}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {icon}
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Nav columns */}
-          {NAV_COLS.map(({ title, links }) => (
-            <div key={title} className="footer-col">
-              <span className="footer-col-title">{title}</span>
-              <ul className="footer-col-links">
-                {links.map(({ label, href }) => (
-                  <li key={label} className="footer-col-link">
-                    {href.startsWith("/") ? (
-                      <Link to={href}>{label}</Link>
-                    ) : (
-                      <a href={href}>{label}</a>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-
-        {/* ── Bottom bar ── */}
-        <div className="footer-bottom">
-          <p className="footer-copy">
-            © {currentYear} <span>Sycamore Cottage.</span> All rights reserved.
+const Footer = () => (
+  <footer className="footer">
+    <div className="footer-inner">
+      <div className="footer-top">
+        <div className="footer-brand">
+          <Link to="/" className="footer-logo">
+            <span className="footer-logo-mark">Sycamore</span>
+            <span className="footer-logo-sub">Cottage</span>
+          </Link>
+          <p className="footer-tagline">
+            Thoughtfully designed residential care where community, comfort, and
+            compassion converge.
           </p>
-          <ul className="footer-legal">
-            <li>
-              <a href="/privacy">Privacy Policy</a>
-            </li>
-            <li>
-              <a href="/terms">Terms of Use</a>
-            </li>
-            <li>
-              <a href="/accessibility">Accessibility</a>
-            </li>
-          </ul>
+          <div className="footer-social">
+            {SOCIAL.map(({ label, href, icon }) => (
+              <a
+                key={label}
+                href={href}
+                className="footer-social-link"
+                aria-label={label}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {icon}
+              </a>
+            ))}
+          </div>
         </div>
+
+        {NAV_COLS.map(({ title, links }) => (
+          <div key={title} className="footer-col">
+            <span className="footer-col-title">{title}</span>
+            <ul className="footer-col-links">
+              {links.map(({ label, href }) => (
+                <li key={label} className="footer-col-link">
+                  {href.startsWith("/") ? (
+                    <Link to={href}>{label}</Link>
+                  ) : (
+                    <a href={href}>{label}</a>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
-    </footer>
-  );
-};
+
+      <div className="footer-bottom">
+        <p className="footer-copy">
+          © {new Date().getFullYear()} <span>Sycamore Cottage.</span> All rights
+          reserved.
+        </p>
+        <ul className="footer-legal">
+          <li>
+            <a href="/privacy">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="/terms">Terms of Use</a>
+          </li>
+          <li>
+            <a href="/accessibility">Accessibility</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+);
 
 export default Footer;

@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import useMapAnimation from "../hooks/useMapAnimation";
 import "./MapSection.scss";
 
 const LAT = 51.25127075425786;
@@ -8,6 +9,10 @@ const MapSection = () => {
   const mapRef = useRef(null);
   const mapInstanceRef = useRef(null);
 
+  const { sectionRef, cardRef, labelRef, headingRef, detailsRef, ctaRef } =
+    useMapAnimation();
+
+  // Map initialization (separate from animations)
   useEffect(() => {
     if (mapInstanceRef.current) return;
 
@@ -61,30 +66,35 @@ const MapSection = () => {
     mapInstanceRef.current = map;
 
     return () => {
-      map.remove();
-      mapInstanceRef.current = null;
+      if (mapInstanceRef.current) {
+        mapInstanceRef.current.remove();
+        mapInstanceRef.current = null;
+      }
     };
   }, []);
 
   return (
-    <section className="map-section" id="find-us">
+    <section className="map-section" id="find-us" ref={sectionRef}>
       {/* Full bleed map */}
       <div ref={mapRef} className="map-container" />
 
       {/* Floating card */}
-      <div className="map-card">
-        <div className="map-card-label">
+      <div className="map-card" ref={cardRef}>
+        <div className="map-card-label" ref={labelRef}>
           <span className="map-card-label-text">Find Us</span>
         </div>
 
-        <h2 className="map-card-heading">
+        <h2 className="map-card-heading" ref={headingRef}>
           Come visit
           <br />
           <em>Sycamore Cottage.</em>
         </h2>
 
         <div className="map-card-details">
-          <div className="map-card-detail-item">
+          <div
+            className="map-card-detail-item"
+            ref={(el) => (detailsRef.current[0] = el)}
+          >
             <div className="map-card-detail-icon">
               <svg
                 viewBox="0 0 20 20"
@@ -117,7 +127,10 @@ const MapSection = () => {
             </div>
           </div>
 
-          <div className="map-card-detail-item">
+          <div
+            className="map-card-detail-item"
+            ref={(el) => (detailsRef.current[1] = el)}
+          >
             <div className="map-card-detail-icon">
               <svg
                 viewBox="0 0 20 20"
@@ -137,7 +150,10 @@ const MapSection = () => {
             </div>
           </div>
 
-          <div className="map-card-detail-item">
+          <div
+            className="map-card-detail-item"
+            ref={(el) => (detailsRef.current[2] = el)}
+          >
             <div className="map-card-detail-icon">
               <svg
                 viewBox="0 0 20 20"
@@ -172,6 +188,7 @@ const MapSection = () => {
 
         <a
           className="map-card-cta"
+          ref={ctaRef}
           href={`https://www.google.com/maps/dir/?api=1&destination=${LAT},${LNG}`}
           target="_blank"
           rel="noopener noreferrer"

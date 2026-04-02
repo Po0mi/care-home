@@ -1,16 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import logo from "../assets/tree-svgrepo-com.svg";
 import useNavMenu from "../hooks/useNavMenu";
 import useScrolled from "../hooks/useScrolled";
 import useActiveLink from "../hooks/useActiveLink";
+import useNavbarAnimation from "../hooks/useNavbarAnimation";
 import "./Navbar.scss";
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
-  { label: "Online Community", href: "/community" },
   { label: "Join The Team", href: "/careers" },
-  { label: "Contact", href: "/contact" },
 ];
 
 const CTA = { label: "Book A Tour", href: "/book-tour" };
@@ -19,18 +19,27 @@ const Navbar = () => {
   const { isOpen, toggle, close } = useNavMenu();
   const scrolled = useScrolled(60);
   const { isActive } = useActiveLink();
+  const { navRef } = useNavbarAnimation();
 
   return (
     <>
-      <nav className={`navbar${scrolled ? " scrolled" : ""}`}>
+      <nav
+        ref={navRef}
+        className={`navbar${scrolled ? " scrolled" : ""}${isOpen ? " menu-open" : ""}`}
+      >
         <div className="navbar-inner">
-          {/* Logo */}
           <Link to="/" className="navbar-logo" onClick={close}>
-            <span className="navbar-logo-mark">Sycamore</span>
-            <span className="navbar-logo-sub">Cottage</span>
+            <img
+              src={logo}
+              alt="Sycamore Cottage logo"
+              className="navbar-logo-img"
+            />
+            <div className="navbar-logo-text">
+              <span className="navbar-logo-mark">Sycamore</span>
+              <span className="navbar-logo-sub">Cottage</span>
+            </div>
           </Link>
 
-          {/* Desktop Links */}
           <ul className="navbar-links">
             {NAV_LINKS.map(({ label, href }) => (
               <li key={href} className="navbar-link">
@@ -41,12 +50,10 @@ const Navbar = () => {
             ))}
           </ul>
 
-          {/* Desktop CTA */}
           <div className="navbar-cta">
             <Link to={CTA.href}>{CTA.label}</Link>
           </div>
 
-          {/* Hamburger */}
           <button
             className={`navbar-hamburger${isOpen ? " open" : ""}`}
             onClick={toggle}
@@ -60,7 +67,6 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Mobile Menu */}
       <div
         className={`navbar-mobile${isOpen ? " open" : ""}`}
         aria-hidden={!isOpen}
@@ -85,7 +91,7 @@ const Navbar = () => {
           </Link>
         </div>
 
-        <span className="navbar-mobile-footer">© 2025 Sycamore Cottage</span>
+        <span className="navbar-mobile-footer">© 2026 Sycamore Cottage</span>
       </div>
     </>
   );

@@ -42,11 +42,30 @@
 // ── Logo ───────────────────────────────
 .navbar-logo {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
+
   text-decoration: none;
-  line-height: 1;
-  gap: 5px;
   z-index: 1001;
+}
+
+.navbar-logo-img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  flex-shrink: 0;
+  transition: filter var(--transition);
+}
+
+.navbar.scrolled .navbar-logo-img {
+  filter: none;
+}
+
+.navbar-logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  gap: 2px;
 }
 
 .navbar-logo-mark {
@@ -65,7 +84,7 @@
 
 .navbar-logo-sub {
   font-family: var(--font-body);
-  font-size: 0.6rem;
+  font-size: 0.58rem;
   font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -101,10 +120,11 @@
 
 .navbar-link a {
   font-family: var(--font-body);
-  font-size: 0.9rem;
+  font-size: 0.78rem;
   font-weight: 400;
-  letter-spacing: 0.03em;
-  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
   text-decoration: none;
   padding: 4px 0;
   transition: color var(--transition);
@@ -139,7 +159,7 @@
 
 // scrolled state — dark text
 .navbar.scrolled .navbar-link a {
-  color: var(--ink);
+  color: var(--gray-400);
 }
 
 .navbar.scrolled .navbar-link a::after {
@@ -255,6 +275,59 @@
 
   .navbar-hamburger {
     display: flex;
+  }
+
+  // Always white on mobile — hero video is dark
+  .navbar-logo-mark {
+    color: var(--white) !important;
+  }
+
+  .navbar-logo-sub {
+    color: var(--blue-mid) !important;
+  }
+
+  .navbar-hamburger span {
+    background: var(--white) !important;
+  }
+
+  // When scrolled — dark
+  .navbar.scrolled .navbar-logo-mark {
+    color: var(--ink) !important;
+  }
+
+  .navbar.scrolled .navbar-logo-sub {
+    color: var(--blue) !important;
+  }
+
+  .navbar.scrolled .navbar-hamburger span {
+    background: var(--ink) !important;
+  }
+
+  .navbar.scrolled .navbar-logo-img {
+    filter: none !important;
+  }
+
+  // When menu is open — dark logo + X, solid white navbar
+  .navbar-hamburger.open span {
+    background: var(--ink) !important;
+  }
+
+  .navbar.menu-open {
+    background: var(--white) !important;
+    border-bottom-color: var(--gray-100) !important;
+    box-shadow: none !important;
+  }
+
+  .navbar.menu-open .navbar-logo-mark {
+    color: var(--ink) !important;
+  }
+
+  .navbar.menu-open .navbar-logo-sub {
+    color: var(--blue) !important;
+  }
+
+  .navbar.menu-open .navbar-logo-img {
+    filter: none !important;
   }
 }
 

@@ -1,122 +1,117 @@
+import useContactAnimation from "../hooks/useContactAnimation";
 import "./Contact.scss";
 
 const Contact = () => {
+  const {
+    sectionRef,
+    bgTextRef,
+    labelRef,
+    labelLinesRef,
+    headingRef,
+    detailsRef,
+    statsRef,
+    statItemsRef,
+  } = useContactAnimation();
+
   return (
-    <section className="contact" id="contact">
-      <div className="contact-bg-text">Hello</div>
+    <section className="contact" id="contact" ref={sectionRef}>
+      <div className="contact-bg-text" ref={bgTextRef}>
+        Hello
+      </div>
 
       <div className="contact-inner">
-        {/* Label */}
-        <div className="contact-label">
-          <span className="contact-label-line" />
+        <div className="contact-label" ref={labelRef}>
+          <span
+            className="contact-label-line"
+            ref={(el) => (labelLinesRef.current[0] = el)}
+          />
           <span className="contact-label-text">Get In Touch</span>
-          <span className="contact-label-line" />
+          <span
+            className="contact-label-line"
+            ref={(el) => (labelLinesRef.current[1] = el)}
+          />
         </div>
 
-        {/* Heading */}
-        <h2 className="contact-heading">
-          Let's talk about <em>your loved one.</em>
+        <h2 className="contact-heading" ref={headingRef}>
+          Come visit <em>Sycamore Cottage.</em>
         </h2>
 
-        {/* Sub */}
-        <p className="contact-sub">
-          We'd love to hear from you. Reach out to us anytime.
-        </p>
+        <div className="contact-details">
+          <a
+            className="contact-detail-item"
+            ref={(el) => (detailsRef.current[0] = el)}
+            href="https://maps.google.com/?q=Sycamore+Cottage,Skippetts+La+West,Basingstoke"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10 2C7.2 2 5 4.2 5 7c0 4 5 11 5 11s5-7 5-11c0-2.8-2.2-5-5-5z"
+                stroke="currentColor"
+                strokeWidth="1.5"
+              />
+              <circle
+                cx="10"
+                cy="7"
+                r="1.5"
+                stroke="currentColor"
+                strokeWidth="1.5"
+              />
+            </svg>
+            <span>Skippetts La West, Basingstoke RG21 3HP</span>
+          </a>
 
-        {/* Contact Information */}
-        <div className="contact-info">
-          <div className="contact-info-item">
-            <span className="contact-info-icon">
-              <svg
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M10 10c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                />
-                <path
-                  d="M10 18c3-2.5 7-5.5 7-9.5C17 5 13.9 2 10 2S3 5 3 8.5c0 4 4 7 7 9.5z"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                />
-              </svg>
-            </span>
-            <div className="contact-info-content">
-              <strong>Address</strong>
-              <span>Sycamore Cottage</span>
-              <span>Skippetts Lane West</span>
-              <span>Basingstoke</span>
-              <span>RG21 3HP</span>
-            </div>
-          </div>
-
-          <div className="contact-info-item">
-            <span className="contact-info-icon">
-              <svg
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M3 5h14a1 1 0 011 1v8a1 1 0 01-1 1H3a1 1 0 01-1-1V6a1 1 0 011-1z"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                />
-                <path
-                  d="M3 6l7 5 7-5"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </span>
-            <div className="contact-info-content">
-              <strong>Email</strong>
-              <a href="mailto:enquiries@sycamorecottageresthome.com">
-                g.vanderslott@hotmail.co.uk
-              </a>
-            </div>
-          </div>
-
-          <div className="contact-info-item">
-            <span className="contact-info-icon">
-              <svg
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M17 14c-.7 1.3-2 2-3.5 2-3.5 0-6.5-3-6.5-6.5 0-1.5.7-2.8 2-3.5l1 2-1.5 1.5c.5 1.5 2 3 3.5 3.5l1.5-1.5 2 1z"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </span>
-            <div className="contact-info-content">
-              <strong>Phone</strong>
-              <a href="tel:01256478952">01256 478952</a>
-            </div>
-          </div>
+          <a
+            className="contact-detail-item"
+            ref={(el) => (detailsRef.current[1] = el)}
+            href="mailto:g.vanderslott@hotmail.co.uk"
+          >
+            <svg
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M3 5h14a1 1 0 011 1v8a1 1 0 01-1 1H3a1 1 0 01-1-1V6a1 1 0 011-1z"
+                stroke="currentColor"
+                strokeWidth="1.5"
+              />
+              <path
+                d="M3 6l7 5 7-5"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+              />
+            </svg>
+            <span>g.vanderslott@hotmail.co.uk</span>
+          </a>
         </div>
 
-        {/* Stats */}
-        <div className="contact-stats">
-          <div className="contact-stat">
+        <div className="contact-stats" ref={statsRef}>
+          <div
+            className="contact-stat"
+            ref={(el) => (statItemsRef.current[0] = el)}
+          >
             <strong>24hr</strong>
             <span>Response time</span>
           </div>
           <span className="contact-stat-div" />
-          <div className="contact-stat">
+          <div
+            className="contact-stat"
+            ref={(el) => (statItemsRef.current[1] = el)}
+          >
             <strong>9.8</strong>
             <span>carehome.co.uk</span>
           </div>
           <span className="contact-stat-div" />
-          <div className="contact-stat">
+          <div
+            className="contact-stat"
+            ref={(el) => (statItemsRef.current[2] = el)}
+          >
             <strong>CQC</strong>
             <span>Outstanding</span>
           </div>

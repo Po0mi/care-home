@@ -1,36 +1,33 @@
 import { Link } from "react-router-dom";
 import heroBg from "../assets/heroBg.webm";
 import mouseSvg from "../assets/mouse.svg";
+import useHeroAnimation from "../hooks/useHeroAnimation";
 import "./Hero.scss";
 
 const Hero = () => {
+  const { containerRef } = useHeroAnimation();
+
   const handleScrollClick = () => {
-    window.scrollTo({
-      top: window.innerHeight,
-      behavior: "smooth",
-    });
+    window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
   };
 
   return (
     <section className="hero" id="home">
-      <div className="hero-container">
+      <div className="hero-container" ref={containerRef}>
         <video autoPlay muted loop playsInline className="hero-video">
           <source src={heroBg} type="video/webm" />
         </video>
 
         <div className="hero-overlay" />
 
-        <div className="hero-label">
-          <span className="hero-label-text">
-            Compassionate Residential Care
-          </span>
-        </div>
-
         <h1 className="hero-title">
-          Where Every Day Feels
+          Care that
           <br />
-          Like <em>Home.</em>
         </h1>
+
+        <h2 className="hero-title2">
+          feels <em>like home.</em>
+        </h2>
 
         <p className="hero-sub">Exceptional care. Real comfort. True home.</p>
 
@@ -133,7 +130,6 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Mouse Scroll Indicator with downloaded SVG */}
         <div className="hero-mouse-scroll" onClick={handleScrollClick}>
           <img
             src={mouseSvg}

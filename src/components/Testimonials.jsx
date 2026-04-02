@@ -1,3 +1,4 @@
+import useTestimonialsAnimation from "../hooks/useTestimonialsAnimation";
 import "./Testimonials.scss";
 
 const MINI_TESTIMONIALS = [
@@ -21,57 +22,72 @@ const MINI_TESTIMONIALS = [
   },
 ];
 
-const Testimonials = () => (
-  <section className="testimonials" id="testimonials">
-    {/* Label */}
-    <div className="testimonials-label">
-      <span className="testimonials-label-text">What people say</span>
-    </div>
+const Testimonials = () => {
+  const {
+    sectionRef,
+    labelRef,
+    headingRef,
+    ratingsRef,
+    bigQuoteRef,
+    cardsRef,
+  } = useTestimonialsAnimation();
 
-    {/* Featured block */}
-    <div className="testimonials-featured">
-      {/* Left — heading + ratings */}
-      <div className="testimonials-featured-left">
-        <h2 className="testimonials-heading">
-          Trusted by families
-          <br />
-          across <em>England.</em>
-        </h2>
-        <div className="testimonials-rating-row">
-          <div className="testimonials-rating">
-            <strong>9.8</strong>
-            <span>carehome.co.uk</span>
+  return (
+    <section className="testimonials" id="testimonials" ref={sectionRef}>
+      {/* Label */}
+      <div className="testimonials-label" ref={labelRef}>
+        <span className="testimonials-label-text">What people say</span>
+      </div>
+
+      {/* Featured block */}
+      <div className="testimonials-featured">
+        {/* Left — heading + ratings */}
+        <div className="testimonials-featured-left">
+          <h2 className="testimonials-heading" ref={headingRef}>
+            Trusted by families
+            <br />
+            across <em>England.</em>
+          </h2>
+          <div className="testimonials-rating-row" ref={ratingsRef}>
+            <div className="testimonials-rating">
+              <strong>9.8</strong>
+              <span>carehome.co.uk</span>
+            </div>
+            <div className="testimonials-rating">
+              <strong>CQC</strong>
+              <span>Outstanding</span>
+            </div>
           </div>
-          <div className="testimonials-rating">
-            <strong>CQC</strong>
-            <span>Outstanding</span>
-          </div>
+        </div>
+
+        {/* Right — big pull quote */}
+        <div className="testimonials-featured-right" ref={bigQuoteRef}>
+          <p className="testimonials-big-quote">
+            Outstanding in all areas, the warmth and professionalism of every
+            member of staff is clearly evident throughout the home.
+          </p>
+          <p className="testimonials-big-source">
+            Care Quality Commission · CQC Inspection Report
+          </p>
         </div>
       </div>
 
-      {/* Right — big pull quote */}
-      <div className="testimonials-featured-right">
-        <p className="testimonials-big-quote">
-          Outstanding in all areas — the warmth and professionalism of every
-          member of staff is clearly evident throughout the home.
-        </p>
-        <p className="testimonials-big-source">
-          Care Quality Commission · CQC Inspection Report
-        </p>
+      {/* Mini cards */}
+      <div className="testimonials-cards">
+        {MINI_TESTIMONIALS.map(({ source, quote, author }, index) => (
+          <div
+            key={author}
+            className="testimonials-card"
+            ref={(el) => (cardsRef.current[index] = el)}
+          >
+            <span className="testimonials-card-source">{source}</span>
+            <p className="testimonials-card-quote">{quote}</p>
+            <span className="testimonials-card-author">{author}</span>
+          </div>
+        ))}
       </div>
-    </div>
-
-    {/* Mini cards */}
-    <div className="testimonials-cards">
-      {MINI_TESTIMONIALS.map(({ source, quote, author }) => (
-        <div key={author} className="testimonials-card">
-          <span className="testimonials-card-source">{source}</span>
-          <p className="testimonials-card-quote">{quote}</p>
-          <span className="testimonials-card-author">{author}</span>
-        </div>
-      ))}
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default Testimonials;

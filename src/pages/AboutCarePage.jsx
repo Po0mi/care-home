@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import aboutPhoto from "../assets/about-photo.png";
 import useAboutPageAnimation from "../hooks/useAboutPageAnimation";
-import "./AboutPage.scss";
+import "./AboutCarePage.scss";
 
 const STATS = [
   { value: "1996", label: "Est." },

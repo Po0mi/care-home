@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainLayout from "./layouts/Mainlayout";
 import Home from "./pages/Home";
-import AboutPage from "./pages/AboutPage";
+import AboutPage from "./pages/AboutCarePage";
 import JoinTeamPage from "./pages/JoinTeamPage";
 import BookTourPage from "./pages/BookTourPage";
 

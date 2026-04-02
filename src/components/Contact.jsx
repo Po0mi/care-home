@@ -87,7 +87,7 @@ const Contact = () => {
                 strokeLinecap="round"
               />
             </svg>
-            <span>g.vanderslott@hotmail.co.uk</span>
+            <span> sycamorechome1@gmail.com</span>
           </a>
         </div>
 

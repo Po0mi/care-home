@@ -21,8 +21,8 @@ const NAV_COLS = [
     links: [
       { label: "Get In Touch", href: "/contact" },
       {
-        label: "g.vanderslott@hotmail.co.uk",
-        href: "mailto:g.vanderslott@hotmail.co.uk",
+        label: "sycamorechome1@gmail.com",
+        href: "mailto:sycamorechome1@gmail.com",
       },
       { label: "01256 478952", href: "tel:01256478952" },
     ],

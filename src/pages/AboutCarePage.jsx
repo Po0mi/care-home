@@ -16,8 +16,8 @@ const TEAM = [
     role: "Founder & Director",
   },
   {
-    initials: "MS",
-    name: "Melanie Stevens",
+    initials: "AH",
+    name: "Anna Homer",
     role: "Registered Manager",
   },
 ];

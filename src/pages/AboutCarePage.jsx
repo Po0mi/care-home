@@ -5,7 +5,6 @@ import "./AboutCarePage.scss";
 
 const STATS = [
   { value: "1996", label: "Est." },
-  { value: "CQC", label: "Good · All areas" },
   { value: "24/7", label: "On-site support" },
 ];
 
@@ -19,6 +18,16 @@ const TEAM = [
     initials: "AH",
     name: "Anna Homer",
     role: "Registered Manager",
+  },
+  {
+    initials: "BG",
+    name: "Beverly George",
+    role: "Operations Managerr",
+  },
+  {
+    initials: "VC",
+    name: "Veronica De Castro",
+    role: "Team Leader",
   },
 ];
 
@@ -113,12 +122,6 @@ const AboutPage = () => {
             <div className="about-hero-img" ref={heroImageRef}>
               <img src={aboutPhoto} alt="Sycamore Cottage" />
             </div>
-            <div className="about-hero-cqc" ref={heroCqcRef}>
-              <span className="about-hero-cqc-dot" />
-              <span className="about-hero-cqc-text">
-                CQC Rated Good · All Areas
-              </span>
-            </div>
           </div>
         </div>
       </section>
@@ -152,11 +155,11 @@ const AboutPage = () => {
               >
                 Sycamore Cottage first opened in <em>1996</em> by Anthony
                 Vanderslott, following his career in mental health nursing, and
-                it remains under his dedicated leadership today. He works
-                closely with Melanie Stevens, who started as a beloved carer
-                before completing her qualifications and becoming our Registered
-                Manager in 2019. Following a recent CQC inspection, we are proud
-                to be rated 'Good' in all areas.
+                it remains under his dedicated leadership today. Since 2023,
+                Anna Homer has been the registered manager, fully committed to
+                improving the quality of care in the facility. Her methods and
+                steadfast dedication have greatly enhanced the residents'
+                overall well-being and satisfaction.
               </p>
             </div>
 

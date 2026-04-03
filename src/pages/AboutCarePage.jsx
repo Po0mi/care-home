@@ -9,26 +9,10 @@ const STATS = [
 ];
 
 const TEAM = [
-  {
-    initials: "AV",
-    name: "Anthony Vanderslott",
-    role: "Founder & Director",
-  },
-  {
-    initials: "AH",
-    name: "Anna Homer",
-    role: "Registered Manager",
-  },
-  {
-    initials: "BG",
-    name: "Beverly George",
-    role: "Operations Manager",
-  },
-  {
-    initials: "VD",
-    name: "Veronica De Castro",
-    role: "Team Leader",
-  },
+  { initials: "AV", name: "Anthony Vanderslott", role: "Founder & Director" },
+  { initials: "AH", name: "Anna Homer", role: "Registered Manager" },
+  { initials: "BG", name: "Beverly George", role: "Operations Manager" },
+  { initials: "VD", name: "Veronica De Castro", role: "Team Leader" },
 ];
 
 const VALUES = [
@@ -56,16 +40,15 @@ const VALUES = [
 
 const AboutPage = () => {
   const {
-    // Hero refs
     heroRef,
     heroBgTextRef,
     heroLabelRef,
     heroHeadingRef,
+    heroKenseiRef,
     heroSubRef,
     heroStatsRef,
     heroStatsItemsRef,
     heroImageRef,
-    // Content refs
     storyRef,
     storyTextRef,
     teamRef,
@@ -86,15 +69,23 @@ const AboutPage = () => {
         </div>
 
         <div className="about-hero-inner">
-          {/* Left — heading + copy + stats */}
+          {/* Left */}
           <div className="about-hero-left">
             <div className="about-hero-label" ref={heroLabelRef}>
+              <span className="about-hero-label-line" />
               <span className="about-hero-label-text">About Us</span>
             </div>
 
             <h1 className="about-hero-heading" ref={heroHeadingRef}>
               Our community <em>awaits.</em>
             </h1>
+
+            {/* Kensei ghost heading */}
+            <h2 className="about-kensei-heading" ref={heroKenseiRef}>
+              <em>Sycamore Cottage </em>
+              <span className="about-kensei-faded">care that feels like </span>
+              <em>home.</em>
+            </h2>
 
             <p className="about-hero-sub" ref={heroSubRef}>
               Whether you're looking for respite or a permanent residence,
@@ -116,7 +107,7 @@ const AboutPage = () => {
             </div>
           </div>
 
-          {/* Right — image placeholder */}
+          {/* Right — image */}
           <div className="about-hero-right">
             <div className="about-hero-img" ref={heroImageRef}>
               <img src={aboutPhoto} alt="Sycamore Cottage" />
@@ -130,7 +121,6 @@ const AboutPage = () => {
         <div className="about-content-inner">
           {/* Story + Team */}
           <div className="about-content-grid">
-            {/* Story */}
             <div className="about-story" ref={storyRef}>
               <div className="about-section-label">
                 <span className="about-section-label-line" />
@@ -162,7 +152,6 @@ const AboutPage = () => {
               </p>
             </div>
 
-            {/* Team */}
             <div className="about-team" ref={teamRef}>
               <div className="about-section-label">
                 <span className="about-section-label-line" />
@@ -189,6 +178,7 @@ const AboutPage = () => {
           {/* Values */}
           <div className="about-values" ref={valuesRef}>
             <div className="about-section-label">
+              <span className="about-section-label-line" />
               <span className="about-section-label-text">
                 What We Stand For
               </span>

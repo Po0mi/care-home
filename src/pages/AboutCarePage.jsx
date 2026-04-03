@@ -22,7 +22,7 @@ const TEAM = [
   {
     initials: "BG",
     name: "Beverly George",
-    role: "Operations Managerr",
+    role: "Operations Manager",
   },
   {
     initials: "VD",

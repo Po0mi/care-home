@@ -57,9 +57,8 @@
   grid-area: 1 / 2 / 4 / 6;
   text-align: left;
   font-family: var(--font-display);
-  font-size: clamp(3.5rem, 15vw, 13rem);
+  font-size: clamp(3.5rem, 15vw, 12rem);
   font-weight: 400;
-  line-height: 0.85;
   letter-spacing: -0.03em;
   color: var(--white);
   z-index: 2;
@@ -71,9 +70,8 @@
 .hero-label {
   grid-area: 1 / 2 / 3 / 5;
   font-family: var(--font-display);
-  font-size: clamp(3.5rem, 15vw, 5rem);
+  font-size: clamp(3.5rem, 15vw, 7rem);
   font-weight: 400;
-  line-height: 0.85;
   letter-spacing: -0.03em;
   color: var(--blue-mid);
   z-index: 2;
@@ -81,16 +79,15 @@
   align-self: center;
   padding-left: clamp(1.5rem, 4vw, 3rem);
   font-style: italic;
-  padding-top: 6rem;
+  padding-top: 2.1rem;
 }
 
 .hero-title2 {
   grid-area: 2 / 2 / 5 / 7;
   text-align: right;
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 10vw, 13rem);
+  font-size: clamp(2.5rem, 10vw, 12rem);
   font-weight: 400;
-  line-height: 0.85;
   letter-spacing: -0.03em;
   color: var(--white);
   z-index: 2;
@@ -298,8 +295,8 @@
     padding-right: 0;
   }
   .hero-label {
-    font-size: clamp(3.5rem, 15vw, 6rem);
-    padding-top: 6rem;
+    font-size: clamp(3.5rem, 15vw, 7rem);
+    padding-top: 4rem;
   }
 }
 

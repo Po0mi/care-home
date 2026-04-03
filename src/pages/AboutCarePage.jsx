@@ -25,7 +25,7 @@ const TEAM = [
     role: "Operations Managerr",
   },
   {
-    initials: "VC",
+    initials: "VD",
     name: "Veronica De Castro",
     role: "Team Leader",
   },
@@ -65,7 +65,6 @@ const AboutPage = () => {
     heroStatsRef,
     heroStatsItemsRef,
     heroImageRef,
-    heroCqcRef,
     // Content refs
     storyRef,
     storyTextRef,

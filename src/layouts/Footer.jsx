@@ -19,7 +19,6 @@ const NAV_COLS = [
   {
     title: "Contact",
     links: [
-      { label: "Get In Touch", href: "/contact" },
       {
         label: "sycamorechome1@gmail.com",
         href: "mailto:sycamorechome1@gmail.com",

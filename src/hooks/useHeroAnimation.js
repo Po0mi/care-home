@@ -46,13 +46,13 @@ const useHeroAnimation = () => {
         )
 
         // 2. Label — italic "Sycamore" slides up
-        .to(".hero-label", { opacity: 1, y: 0, duration: 0.7 }, "-=0.6")
+        .to(".hero-label", { opacity: 1, y: 0, duration: 0.7 }, "-=0.5")
 
         // 3. Title 1 — "Care that"
-        .to(".hero-title", { opacity: 1, y: 0, duration: 0.9 }, "-=0.5")
+        .to(".hero-title", { opacity: 1, y: 0, duration: 0.7 }, "-=0.5")
 
         // 4. Title 2 — "feels like home."
-        .to(".hero-title2", { opacity: 1, y: 0, duration: 0.9 }, "-=0.65")
+        .to(".hero-title2", { opacity: 1, y: 0, duration: 0.7 }, "-=0.65")
 
         // 5. Sub copy
         .to(".hero-sub", { opacity: 1, y: 0, duration: 0.7 }, "-=0.5")

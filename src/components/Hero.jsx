@@ -21,7 +21,7 @@ const Hero = () => {
         <div className="hero-overlay" />
         <h2 className="hero-label">Sycamore</h2>
         <h1 className="hero-title">
-          Care that
+          care that
           <br />
         </h1>
 

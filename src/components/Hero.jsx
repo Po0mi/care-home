@@ -20,13 +20,10 @@ const Hero = () => {
 
         <div className="hero-overlay" />
         <h2 className="hero-label">Sycamore</h2>
-        <h1 className="hero-title">
-          care that
-          <br />
-        </h1>
+        <h1 className="hero-title">care that feels</h1>
 
         <h1 className="hero-title2">
-          feels <em>like home.</em>
+          <em>like home.</em>
         </h1>
 
         <p className="hero-sub">Exceptional care. Real comfort. True home.</p>

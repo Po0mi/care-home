@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
+import emailjs from "@emailjs/browser";
 import useBookTourAnimation from "../hooks/useBookTourAnimation";
 import "./BookTourPage.scss";
+
+const SERVICE_ID = "service_yreu7ri";
+const TEMPLATE_ID = "template_b8ftbhn";
+const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 const BookTourPage = () => {
   const [form, setForm] = useState({
@@ -10,6 +15,8 @@ const BookTourPage = () => {
     message: "",
   });
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const {
     sectionRef,
@@ -29,14 +36,36 @@ const BookTourPage = () => {
   const handleChange = (e) =>
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Wire up to EmailJS here:
-    // emailjs.send("SERVICE_ID", "TEMPLATE_ID", form, "PUBLIC_KEY")
-    setSent(true);
+    setLoading(true);
+    setError(null);
+
+    try {
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          from_name: form.name,
+          phone: form.phone,
+          visit_date: form.date,
+          message: form.message || "No message provided.",
+          time: new Date().toLocaleString("en-GB", {
+            dateStyle: "long",
+            timeStyle: "short",
+          }),
+        },
+        PUBLIC_KEY,
+      );
+      setSent(true);
+    } catch (err) {
+      console.error("EmailJS error:", err);
+      setError("Something went wrong. Please try again or call us directly.");
+    } finally {
+      setLoading(false);
+    }
   };
 
-  // Trigger success animation when sent becomes true
   useEffect(() => {
     if (sent && window.animateBookTourSuccess) {
       window.animateBookTourSuccess();
@@ -46,13 +75,11 @@ const BookTourPage = () => {
   return (
     <div className="book-tour" ref={sectionRef}>
       <section className="book-tour-section">
-        {/* Ghost watermark */}
         <div className="book-tour-bg-text" ref={bgTextRef}>
           Tour
         </div>
 
         <div className="book-tour-inner">
-          {/* Label */}
           <div className="book-tour-label" ref={labelRef}>
             <span
               className="book-tour-label-line"
@@ -65,18 +92,15 @@ const BookTourPage = () => {
             />
           </div>
 
-          {/* Heading */}
           <h1 className="book-tour-heading" ref={headingRef}>
             Come see us <em>in person.</em>
           </h1>
 
-          {/* Sub */}
           <p className="book-tour-sub" ref={subRef}>
             Fill in your details and we'll be in touch to confirm a time that
             works for you and your family.
           </p>
 
-          {/* Form */}
           {sent ? (
             <div className="book-tour-success" ref={successRef}>
               <svg
@@ -122,6 +146,7 @@ const BookTourPage = () => {
                     onChange={handleChange}
                     placeholder="Full name"
                     required
+                    disabled={loading}
                   />
                 </div>
                 <div
@@ -135,6 +160,7 @@ const BookTourPage = () => {
                     onChange={handleChange}
                     placeholder="+44..."
                     required
+                    disabled={loading}
                   />
                 </div>
               </div>
@@ -152,6 +178,7 @@ const BookTourPage = () => {
                   value={form.date}
                   onChange={handleChange}
                   required
+                  disabled={loading}
                 />
               </div>
 
@@ -168,28 +195,38 @@ const BookTourPage = () => {
                   onChange={handleChange}
                   placeholder="Anything we should know?"
                   rows="3"
+                  disabled={loading}
                 />
               </div>
+
+              {error && <p className="book-tour-error">{error}</p>}
 
               <div className="book-tour-footer" ref={footerRef}>
                 <p className="book-tour-note" ref={noteRef}>
                   We aim to respond within 24 hours.
                 </p>
-                <button type="submit" className="book-tour-btn" ref={buttonRef}>
-                  Request A Tour
-                  <svg
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M3 8h10M9 4l4 4-4 4"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                <button
+                  type="submit"
+                  className={`book-tour-btn${loading ? " loading" : ""}`}
+                  ref={buttonRef}
+                  disabled={loading}
+                >
+                  {loading ? "Sending..." : "Request A Tour"}
+                  {!loading && (
+                    <svg
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M3 8h10M9 4l4 4-4 4"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  )}
                 </button>
               </div>
             </form>

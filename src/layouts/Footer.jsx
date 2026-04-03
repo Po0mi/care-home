@@ -111,17 +111,6 @@ const Footer = () => (
           © {new Date().getFullYear()} <span>Sycamore Cottage.</span> All rights
           reserved.
         </p>
-        <ul className="footer-legal">
-          <li>
-            <a href="/privacy">Privacy Policy</a>
-          </li>
-          <li>
-            <a href="/terms">Terms of Use</a>
-          </li>
-          <li>
-            <a href="/accessibility">Accessibility</a>
-          </li>
-        </ul>
       </div>
     </div>
   </footer>

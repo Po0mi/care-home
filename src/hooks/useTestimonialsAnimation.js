@@ -2,112 +2,94 @@ import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
 const useTestimonialsAnimation = () => {
   const sectionRef = useRef(null);
   const labelRef = useRef(null);
-  const headingRef = useRef(null);
   const ratingsRef = useRef(null);
-  const bigQuoteRef = useRef(null);
+  const featuredRef = useRef(null);
   const cardsRef = useRef([]);
 
   useEffect(() => {
-    const section = sectionRef.current;
-    const label = labelRef.current;
-    const heading = headingRef.current;
-    const ratings = ratingsRef.current;
-    const bigQuote = bigQuoteRef.current;
-    const cards = cardsRef.current;
+    const ctx = gsap.context(() => {
+      // ── Initial states ──────────────────
+      gsap.set([labelRef.current, ratingsRef.current], {
+        opacity: 0,
+        y: 20,
+      });
 
-    if (!section) return;
+      gsap.set(featuredRef.current, {
+        opacity: 0,
+        y: 40,
+      });
 
-    // Set initial states
-    gsap.set([label, heading, ratings, bigQuote], {
-      opacity: 0,
-      y: 30,
-    });
+      gsap.set(cardsRef.current.filter(Boolean), {
+        opacity: 0,
+        y: 30,
+      });
 
-    gsap.set(cards, {
-      opacity: 0,
-      y: 40,
-    });
-
-    // Create main timeline
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: section,
-        start: "top 80%",
-        end: "bottom 20%",
-        toggleActions: "play none none none",
-      },
-    });
-
-    // Animate label first
-    tl.to(label, {
-      opacity: 1,
-      y: 0,
-      duration: 0.5,
-      ease: "power2.out",
-    })
-      // Animate heading
-      .to(
-        heading,
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          ease: "back.out(0.6)",
+      // ── Timeline ────────────────────────
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+          toggleActions: "play none none none",
         },
-        "-=0.5",
-      )
-      // Animate ratings
-      .to(
-        ratings,
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.5,
-          ease: "power2.out",
-        },
-        "-=0.5",
-      )
-      // Animate big quote
-      .to(
-        bigQuote,
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.7,
-          ease: "power2.out",
-        },
-        "-=0.5",
-      )
-      // Animate cards with stagger
-      .to(
-        cards,
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          stagger: 0.15,
-          ease: "back.out(0.5)",
-        },
-        "-=0.5",
-      );
+      });
 
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
+      // 1. Header row — label + ratings together
+      tl.to(labelRef.current, {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        ease: "power2.out",
+      })
+        .to(
+          ratingsRef.current,
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            ease: "power2.out",
+          },
+          "-=0.5",
+        )
+
+        // 2. Featured CQC card slides up
+        .to(
+          featuredRef.current,
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power3.out",
+          },
+          "-=0.5",
+        )
+
+        // 3. Mini cards stagger in
+        .to(
+          cardsRef.current.filter(Boolean),
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            stagger: 0.12,
+            ease: "power2.out",
+          },
+          "-=0.5",
+        );
+    }, sectionRef);
+
+    return () => ctx.revert();
   }, []);
 
   return {
     sectionRef,
     labelRef,
-    headingRef,
     ratingsRef,
-    bigQuoteRef,
+    featuredRef,
     cardsRef,
   };
 };

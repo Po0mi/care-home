@@ -23,68 +23,78 @@ const MINI_TESTIMONIALS = [
 ];
 
 const Testimonials = () => {
-  const {
-    sectionRef,
-    labelRef,
-    headingRef,
-    ratingsRef,
-    bigQuoteRef,
-    cardsRef,
-  } = useTestimonialsAnimation();
+  const { sectionRef, labelRef, ratingsRef, featuredRef, cardsRef } =
+    useTestimonialsAnimation();
 
   return (
     <section className="testimonials" id="testimonials" ref={sectionRef}>
-      {/* Label */}
-      <div className="testimonials-label" ref={labelRef}>
-        <span className="testimonials-label-text">What people say</span>
-      </div>
-
-      {/* Featured block */}
-      <div className="testimonials-featured">
-        {/* Left — heading + ratings */}
-        <div className="testimonials-featured-left">
-          <h2 className="testimonials-heading" ref={headingRef}>
-            Trusted by families
-            <br />
-            across <em>England.</em>
-          </h2>
-          <div className="testimonials-rating-row" ref={ratingsRef}>
-            <div className="testimonials-rating">
-              <strong>9.8</strong>
-              <span>carehome.co.uk</span>
-            </div>
-            <div className="testimonials-rating">
-              <strong>CQC</strong>
-              <span>Outstanding</span>
-            </div>
-          </div>
+      {/* Header row */}
+      <div className="testimonials-header">
+        <div className="testimonials-label" ref={labelRef}>
+          <span className="testimonials-label-line" />
+          <span className="testimonials-label-text">What people say</span>
         </div>
-
-        {/* Right — big pull quote */}
-        <div className="testimonials-featured-right" ref={bigQuoteRef}>
-          <p className="testimonials-big-quote">
-            Outstanding in all areas, the warmth and professionalism of every
-            member of staff is clearly evident throughout the home.
-          </p>
-          <p className="testimonials-big-source">
-            Care Quality Commission · CQC Inspection Report
-          </p>
+        <div className="testimonials-rating-row" ref={ratingsRef}>
+          <div className="testimonials-rating">
+            <strong>9.8</strong>
+            <span>carehome.co.uk</span>
+          </div>
+          <div className="testimonials-rating">
+            <strong>CQC</strong>
+            <span>Good · All Areas</span>
+          </div>
         </div>
       </div>
 
-      {/* Mini cards */}
-      <div className="testimonials-cards">
-        {MINI_TESTIMONIALS.map(({ source, quote, author }, index) => (
-          <div
-            key={author}
-            className="testimonials-card"
-            ref={(el) => (cardsRef.current[index] = el)}
-          >
-            <span className="testimonials-card-source">{source}</span>
-            <p className="testimonials-card-quote">{quote}</p>
-            <span className="testimonials-card-author">{author}</span>
+      {/* Masonry grid */}
+      <div className="testimonials-grid">
+        {/* Featured CQC card — spans 2 rows */}
+        <div className="testimonials-featured-card" ref={featuredRef}>
+          <div className="testimonials-featured-pill">
+            <span className="testimonials-featured-pill-dot" />
+            CQC Report
           </div>
-        ))}
+          <p className="testimonials-featured-quote">
+            "Outstanding in all areas — the warmth and professionalism of every
+            member of staff is clearly evident throughout the home."
+          </p>
+          <div className="testimonials-featured-footer">
+            <span className="testimonials-featured-source">
+              Care Quality Commission · CQC Inspection Report
+            </span>
+          </div>
+        </div>
+
+        {/* Top two mini cards */}
+        {MINI_TESTIMONIALS.slice(0, 2).map(
+          ({ source, quote, author }, index) => (
+            <div
+              key={author}
+              className="testimonials-card"
+              ref={(el) => (cardsRef.current[index] = el)}
+            >
+              <span className="testimonials-card-source">{source}</span>
+              <p className="testimonials-card-quote">{quote}</p>
+              <span className="testimonials-card-author">{author}</span>
+            </div>
+          ),
+        )}
+
+        {/* Wide bottom card */}
+        <div
+          className="testimonials-card testimonials-card--wide"
+          ref={(el) => (cardsRef.current[2] = el)}
+        >
+          <span className="testimonials-card-source">
+            {MINI_TESTIMONIALS[2].source}
+          </span>
+          <p className="testimonials-card-quote">
+            {MINI_TESTIMONIALS[2].quote}
+          </p>
+          <span className="testimonials-card-author">
+            {MINI_TESTIMONIALS[2].author}
+          </span>
+        </div>
       </div>
     </section>
   );

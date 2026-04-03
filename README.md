@@ -1,6 +1,6 @@
 # Sycamore Cottage — Care Home Website
 
-A modern, production-grade residential care home website built as a recreation project. Designed with a clinical-yet-warm aesthetic, featuring a dark video hero, editorial typography, scroll animations, and a live Leaflet map.
+A modern, production-grade residential care home website built as a recreation project. Designed with a clinical-yet-warm aesthetic, featuring a dark video hero, editorial typography, scroll animations, a live Leaflet map, ambient music player, and a fully wired EmailJS booking form.
 
 **Live Demo:** [care-home-ruby.vercel.app](https://care-home-ruby.vercel.app)
 
@@ -10,10 +10,10 @@ A modern, production-grade residential care home website built as a recreation p
 
 | Metric | Desktop | Mobile |
 |---|---|---|
-| Performance | 98 | 88 |
+| Performance | 98 | 82 |
 | Accessibility | 94 | 95 |
 | Best Practices | 100 | 100 |
-| SEO | 91 | 91 |
+| SEO | 100 | 100 |
 
 ---
 
@@ -26,6 +26,7 @@ A modern, production-grade residential care home website built as a recreation p
 | Styling | SCSS (CSS custom properties) |
 | Animation | GSAP + ScrollTrigger |
 | Map | Leaflet.js + CartoDB Positron tiles |
+| Email | EmailJS |
 | Deployment | Vercel |
 
 ---
@@ -34,38 +35,42 @@ A modern, production-grade residential care home website built as a recreation p
 
 ```
 src/
-├── assets/                  # Static assets (video, images, SVGs)
+├── assets/                    # Static assets (video, images, SVGs)
 ├── components/
-│   ├── Navbar/              # Fixed navbar with scroll + mobile states
+│   ├── Navbar/                # Fixed navbar with scroll + mobile states
 │   │   ├── Navbar.jsx
 │   │   └── Navbar.scss
-│   └── Footer/              # Responsive footer with nav columns
-│       ├── Footer.jsx
-│       └── Footer.scss
+│   ├── Footer/                # Responsive footer with nav columns
+│   │   ├── Footer.jsx
+│   │   └── Footer.scss
+│   └── MusicPlayer/           # Floating ambient music player pill
+│       ├── MusicPlayer.jsx
+│       └── MusicPlayer.scss
 ├── hooks/
-│   ├── useNavMenu.js        # Mobile menu toggle + body scroll lock
-│   ├── useScrolled.js       # Scroll threshold detection
-│   ├── useActiveLink.js     # React Router active link state
-│   ├── useNavbarAnimation.js # GSAP navbar entrance animation
-│   ├── useHeroAnimation.js  # GSAP hero entrance sequence
-│   └── useAboutAnimation.js # GSAP ScrollTrigger about section
+│   ├── useNavMenu.js          # Mobile menu toggle + body scroll lock
+│   ├── useScrolled.js         # Scroll threshold detection
+│   ├── useActiveLink.js       # React Router active link state
+│   ├── useNavbarAnimation.js  # GSAP navbar entrance animation
+│   ├── useHeroAnimation.js    # GSAP hero entrance sequence
+│   ├── useAboutAnimation.js   # GSAP ScrollTrigger about section
+│   └── useBookTourAnimation.js # GSAP book tour page animation
 ├── layouts/
-│   └── Mainlayout.jsx       # Shared layout wrapper
+│   └── Mainlayout.jsx         # Shared layout wrapper
 ├── pages/
 │   ├── Home/
-│   │   ├── Home.jsx         # Page entry point
-│   │   ├── Hero.jsx         # Video hero + grid layout
-│   │   ├── About.jsx        # Kensei-style about section
-│   │   ├── QuoteBanner.jsx  # Dark Cicero quote interstitial
-│   │   ├── Testimonials.jsx # CQC + review cards
-│   │   ├── MapSection.jsx   # Leaflet map + floating card
-│   │   └── Contact.jsx      # Dark contact section
+│   │   ├── Home.jsx           # Page entry point
+│   │   ├── Hero.jsx           # Video hero + grid layout
+│   │   ├── About.jsx          # Kensei-style about section
+│   │   ├── QuoteBanner.jsx    # Dark Cicero quote interstitial
+│   │   ├── Testimonials.jsx   # CQC + review cards
+│   │   ├── MapSection.jsx     # Leaflet map + floating card
+│   │   └── Contact.jsx        # Dark contact section
 │   ├── About/
-│   │   └── AboutPage.jsx    # Full about page
+│   │   └── AboutPage.jsx      # Full about page
 │   ├── JoinTeam/
-│   │   └── JoinTeamPage.jsx # Full bleed hero + vacancy card
+│   │   └── JoinTeamPage.jsx   # Full bleed hero + vacancy card
 │   └── BookTour/
-│       └── BookTourPage.jsx # Dark centered booking form
+│       └── BookTourPage.jsx   # Dark centered booking form (EmailJS)
 └── App.jsx
 ```
 
@@ -78,7 +83,7 @@ src/
 | `/` | Home — Hero, About, Quote, Testimonials, Map, Contact |
 | `/about` | About Us — Dark hero, story, team, values, CTA |
 | `/careers` | Join The Team — Full bleed image, vacancy status |
-| `/book-tour` | Book A Tour — Dark form (EmailJS ready) |
+| `/book-tour` | Book A Tour — Dark form wired to EmailJS |
 
 ---
 
@@ -131,15 +136,19 @@ GSAP timeline that animates the logo, nav links, CTA, and hamburger sliding down
 GSAP timeline sequence:
 1. Video scales from `1.08` → `1`
 2. Overlay fades in
-3. Title 1 slides up
-4. Title 2 slides up
-5. Sub copy fades up
-6. CTAs slide up
-7. Trust items stagger in
-8. Scroll indicator fades in
+3. Label ("Sycamore") slides up
+4. Title 1 slides up
+5. Title 2 slides up
+6. Sub copy fades up
+7. CTAs slide up
+8. Trust items stagger in
+9. Scroll indicator fades in
 
 ### `useAboutAnimation`
 ScrollTrigger-powered animations for the About section — image bleed slides in from right, heading, sub copy, and feature items stagger in on scroll.
+
+### `useBookTourAnimation`
+GSAP entrance animation for the Book A Tour page — label lines, heading, sub copy, form fields, and button stagger in on load.
 
 ---
 
@@ -158,20 +167,57 @@ Coordinates: `51.25127075425786, -1.0855206229821315` (Skippetts Lane West, Basi
 
 ## Book A Tour — EmailJS Setup
 
-The booking form is wired for EmailJS. Install and configure:
+The booking form is fully wired to EmailJS.
 
 ```bash
 npm install @emailjs/browser
 ```
 
-In `BookTourPage.jsx`, replace the comment in `handleSubmit`:
+**Credentials (in `.env`):**
+```env
+VITE_EMAILJS_PUBLIC_KEY=your_public_key
+```
 
+**Service & Template IDs** are hardcoded in `BookTourPage.jsx`:
 ```js
-import emailjs from "@emailjs/browser";
+const SERVICE_ID  = "service_yreu7ri";
+const TEMPLATE_ID = "template_b8ftbhn";
+```
 
-emailjs.send("SERVICE_ID", "TEMPLATE_ID", form, "PUBLIC_KEY")
-  .then(() => setSent(true))
-  .catch((err) => console.error(err));
+Form submissions send to `sycamorechome1@gmail.com` via `sycamore.enquiries@gmail.com`. The email template includes name, phone, preferred visit date, message, and submission timestamp.
+
+---
+
+## Music Player
+
+A floating ambient music pill fixed to the bottom center of every page. Starts playing automatically on first user interaction (click, scroll, keydown, or touch) to comply with browser autoplay policies.
+
+**Usage in `Mainlayout.jsx`:**
+```jsx
+<MusicPlayer
+  src="/music/ambient.mp3"
+  title="Ambient Background"
+  artist="Sycamore Cottage"
+/>
+```
+
+Drop your audio file at `public/music/ambient.mp3`. Loops continuously. Includes play/pause toggle, volume slider, and dismiss button.
+
+---
+
+## Vercel Config
+
+`vercel.json` handles client-side routing and excludes static files from the rewrite:
+
+```json
+{
+  "rewrites": [
+    {
+      "source": "/((?!robots.txt|sitemap.xml|favicon.ico).*)",
+      "destination": "/"
+    }
+  ]
+}
 ```
 
 ---
@@ -204,10 +250,24 @@ Add to `index.html`:
 
 ---
 
+## Environment Variables
+
+| Variable | Description |
+|---|---|
+| `VITE_EMAILJS_PUBLIC_KEY` | EmailJS public key from Account page |
+
+Add to `.env` (never commit this file):
+```env
+VITE_EMAILJS_PUBLIC_KEY=your_key_here
+```
+
+Add to Vercel dashboard under **Settings → Environment Variables**.
+
+---
+
 ## Credits
 
 - **Design & Development** — Dan Gabrielle De Castro
 - **Original site** — [sycamorecottageresthome.com](https://www.sycamorecottageresthome.com)
 - **Map tiles** — © OpenStreetMap contributors © CARTO
-- **Stock photo** — Elder resident image via [source]
 - **Tree icon** — SVG Repo

@@ -143,7 +143,11 @@ const JoinTeamPage = () => {
               details on file.
             </p>
 
-            <Link to="/contact" className="join-team-card-cta" ref={cardCtaRef}>
+            <Link
+              to="/#contact"
+              className="join-team-card-cta"
+              ref={cardCtaRef}
+            >
               Get In Touch
               <svg
                 viewBox="0 0 16 16"

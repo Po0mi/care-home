@@ -54,7 +54,7 @@
 // Desktop layout
 // ─────────────────────────────────────────
 .hero-title {
-  grid-area: 1 / 1 / 4 / 5;
+  grid-area: 1 / 2 / 4 / 6;
   text-align: left;
   font-family: var(--font-display);
   font-size: clamp(3.5rem, 15vw, 13rem);
@@ -67,9 +67,23 @@
   align-self: center;
   padding-left: clamp(1.5rem, 4vw, 3rem);
 }
+.hero-label {
+  grid-area: 1 / 2 / 3 / 5;
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 15vw, 5rem);
+  font-weight: 400;
+  line-height: 0.85;
+  letter-spacing: -0.03em;
+  color: var(--blue-mid);
+  z-index: 2;
+  justify-self: start;
+  align-self: center;
+  padding-left: clamp(1.5rem, 4vw, 3rem);
+  font-style: italic;
+}
 
 .hero-title2 {
-  grid-area: 2 / 2 / 5 / 8;
+  grid-area: 2 / 2 / 5 / 7;
   text-align: right;
   font-family: var(--font-display);
   font-size: clamp(2.5rem, 10vw, 13rem);
@@ -89,7 +103,7 @@
 }
 
 .hero-sub {
-  grid-area: 3 / 6 / 5 / 8;
+  grid-area: 3 / 5 / 5 / 8;
   font-family: var(--font-body);
   font-size: clamp(0.85rem, 1.2vw, 1.5rem);
   font-weight: 400;
@@ -114,7 +128,7 @@
 
 // ── Trust Badge ─────────────────────────
 .hero-trust-row {
-  grid-area: 5 / 2 / 6 / 7;
+  grid-area: 4 / 2 / 6 / 7;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -252,9 +266,9 @@
 // ─────────────────────────────────────────
 // Responsive — 1440px
 // ─────────────────────────────────────────
-@media (max-width: 1440px) {
+@media (min-width: 1024px) and (max-width: 1440px) {
   .hero-title {
-    font-size: clamp(3.5rem, 15vw, 10rem);
+    font-size: clamp(3.5rem, 10vw, 10rem);
   }
   .hero-title2 {
     font-size: clamp(2.5rem, 10vw, 10rem);
@@ -269,14 +283,14 @@
 // ─────────────────────────────────────────
 @media (min-width: 1921px) and (max-width: 2560px) {
   .hero-title {
-    font-size: clamp(4rem, 20vw, 16rem);
+    font-size: clamp(4rem, 20vw, 15rem);
   }
   .hero-title2 {
-    font-size: clamp(4rem, 20vw, 16rem);
+    font-size: clamp(4rem, 20vw, 15rem);
   }
   .hero-sub {
     font-size: clamp(0.85rem, 1.2vw, 2rem);
-    grid-area: 3 / 6 / 5 / 9;
+    grid-area: 3 / 5 / 5 / 9;
     padding-top: 5rem;
     padding-right: 0;
   }
@@ -295,6 +309,12 @@
     align-items: flex-start;
     padding: 7rem 1.5rem 5rem;
     gap: 1.25rem;
+  }
+
+  .hero-label {
+    font-size: clamp(1.5rem, 8vw, 2.5rem);
+    padding-left: 0;
+    align-self: auto;
   }
 
   .hero-title {
@@ -346,12 +366,18 @@
     gap: 1rem;
   }
 
+  .hero-label {
+    font-size: clamp(1.25rem, 7vw, 2rem);
+  }
   .hero-title {
     font-size: clamp(2.5rem, 13vw, 4rem);
     align-self: center;
   }
   .hero-title2 {
     font-size: clamp(2.3rem, 12vw, 3.75rem);
+    align-self: center;
+  }
+  .hero-label {
     align-self: center;
   }
   .hero-sub {

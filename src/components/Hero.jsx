@@ -19,15 +19,15 @@ const Hero = () => {
         </video>
 
         <div className="hero-overlay" />
-
+        <h2 className="hero-label">Sycamore</h2>
         <h1 className="hero-title">
           Care that
           <br />
         </h1>
 
-        <h2 className="hero-title2">
+        <h1 className="hero-title2">
           feels <em>like home.</em>
-        </h2>
+        </h1>
 
         <p className="hero-sub">Exceptional care. Real comfort. True home.</p>
 

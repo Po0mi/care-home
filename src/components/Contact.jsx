@@ -107,14 +107,6 @@ const Contact = () => {
             <strong>9.8</strong>
             <span>carehome.co.uk</span>
           </div>
-          <span className="contact-stat-div" />
-          <div
-            className="contact-stat"
-            ref={(el) => (statItemsRef.current[2] = el)}
-          >
-            <strong>CQC</strong>
-            <span>Outstanding</span>
-          </div>
         </div>
       </div>
     </section>

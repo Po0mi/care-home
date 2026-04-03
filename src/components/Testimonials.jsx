@@ -39,10 +39,6 @@ const Testimonials = () => {
             <strong>9.8</strong>
             <span>carehome.co.uk</span>
           </div>
-          <div className="testimonials-rating">
-            <strong>CQC</strong>
-            <span>Good · All Areas</span>
-          </div>
         </div>
       </div>
 

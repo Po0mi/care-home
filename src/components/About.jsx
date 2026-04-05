@@ -6,19 +6,19 @@ import "./About.scss";
 const FEATURES = [
   {
     title: "Personalised Care Plans",
-    desc: "Every resident deserves care that is as unique as they are. Our healthcare professionals develop up to date care plans that go beyond clinical information, including medical history and medication charts, to capture the personal details that make each person who they are. This approach ensures genuine, individualised care rooted in our core belief that every person matters.",
+    desc: "Every resident deserves care as unique as they are. Our professionals create up to date care plans that go beyond clinical data, such as medical history and medications, to include the personal details that define each individual. This ensures genuine, personalized care, rooted in our belief that every person matters.",
   },
   {
     title: "Medication Monitoring",
-    desc: "There comes a point in everyone's life when they may no longer be able to care for themselves. Families naturally want to care for their loved ones, just as they were cared for as children. However, careers and the demands of modern life can often make this difficult. Sycamore Cottage provides the support that retirees and their families need, including Medication Monitoring services which we are more than happy to offer.",
+    desc: "There comes a time when someone may no longer be able to care for themselves. Families want to help, just as they were once cared for, but careers and modern life can make this difficult. Sycamore Cottage provides the support retirees and their families need, including Medication Monitoring services we are happy to offer.",
   },
   {
     title: "Here For You",
-    desc: "Throughout the year, we provide our residents with empathy and genuine support. Moving somewhere new can feel daunting, so we take pride in making every person's experience special. We always ensure there is something exciting to look forward to at Sycamore Cottage. This is just one of the things that sets our Home apart. We are passionate about creating opportunities for our residents to make new memories and friends.",
+    desc: "We provide residents with empathy and genuine support year-round. Moving somewhere new can feel daunting, so we make every person's experience special. There's always something exciting to look forward to at Sycamore Cottage, and that's just one thing that sets us apart. We love creating opportunities for residents to make new memories and friends.",
   },
   {
     title: "Experienced Staff",
-    desc: "Our Registered Manager Anna and the rest of the team at Sycamore Cottage are caring, joyous and dedicated. We believe that as a residential home, our responsibility goes beyond providing a safe and caring environment. We must also create a joyful one. Our staff will treat your loved ones like family, setting us apart from the clinical environments found in some larger care homes.",
+    desc: "Our Registered Manager Anna and the team at Sycamore Cottage are caring, joyous, and dedicated. We believe our responsibility goes beyond a safe environment to creating a joyful one. Our staff will treat your loved ones like family, setting us apart from the clinical feel of some larger care homes.",
   },
 ];
 

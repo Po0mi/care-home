@@ -7,14 +7,14 @@ gsap.registerPlugin(ScrollTrigger);
 const useTestimonialsAnimation = () => {
   const sectionRef = useRef(null);
   const labelRef = useRef(null);
+  const headingRef = useRef(null);
   const ratingsRef = useRef(null);
   const featuredRef = useRef(null);
   const cardsRef = useRef([]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // ── Initial states ──────────────────
-      gsap.set([labelRef.current, ratingsRef.current], {
+      gsap.set([labelRef.current, headingRef.current, ratingsRef.current], {
         opacity: 0,
         y: 20,
       });
@@ -29,7 +29,6 @@ const useTestimonialsAnimation = () => {
         y: 30,
       });
 
-      // ── Timeline ────────────────────────
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -38,13 +37,22 @@ const useTestimonialsAnimation = () => {
         },
       });
 
-      // 1. Header row — label + ratings together
       tl.to(labelRef.current, {
         opacity: 1,
         y: 0,
         duration: 0.5,
         ease: "power2.out",
       })
+        .to(
+          headingRef.current,
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            ease: "power2.out",
+          },
+          "-=0.3",
+        )
         .to(
           ratingsRef.current,
           {
@@ -55,8 +63,6 @@ const useTestimonialsAnimation = () => {
           },
           "-=0.5",
         )
-
-        // 2. Featured CQC card slides up
         .to(
           featuredRef.current,
           {
@@ -65,10 +71,8 @@ const useTestimonialsAnimation = () => {
             duration: 0.8,
             ease: "power3.out",
           },
-          "-=0.5",
+          "-=0.3",
         )
-
-        // 3. Mini cards stagger in
         .to(
           cardsRef.current.filter(Boolean),
           {
@@ -88,6 +92,7 @@ const useTestimonialsAnimation = () => {
   return {
     sectionRef,
     labelRef,
+    headingRef,
     ratingsRef,
     featuredRef,
     cardsRef,

@@ -69,7 +69,6 @@ const AboutPage = () => {
         </div>
 
         <div className="about-hero-inner">
-          {/* Left */}
           <div className="about-hero-left">
             <div className="about-hero-label" ref={heroLabelRef}>
               <span className="about-hero-label-line" />
@@ -80,7 +79,6 @@ const AboutPage = () => {
               Our community <em>awaits.</em>
             </h1>
 
-            {/* Kensei ghost heading */}
             <h2 className="about-kensei-heading" ref={heroKenseiRef}>
               <em>Sycamore Cottage </em>
               <span className="about-kensei-faded">care that feels like </span>
@@ -107,7 +105,6 @@ const AboutPage = () => {
             </div>
           </div>
 
-          {/* Right — image */}
           <div className="about-hero-right">
             <div className="about-hero-img" ref={heroImageRef}>
               <img src={aboutPhoto} alt="Sycamore Cottage" />

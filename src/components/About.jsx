@@ -27,20 +27,17 @@ const About = () => {
 
   return (
     <section className="about" id="about" ref={sectionRef}>
-      {/* Image bleeds out right */}
       <div className="about-image-bleed">
         <div className="about-image-inner">
           <img src={Elder} alt="Elderly person" />
         </div>
       </div>
 
-      {/* Label */}
       <div className="about-label">
         <span className="about-label-line" />
         <span className="about-label-text">Living & Thriving</span>
       </div>
 
-      {/* Heading */}
       <div className="about-heading-wrap">
         <h2 className="about-heading">
           A little about
@@ -53,19 +50,22 @@ const About = () => {
         </h2>
       </div>
 
-      {/* Sub copy */}
       <p className="about-sub">
         Our trained healthcare professionals ensure each resident has a
         personalised, clinically relevant care plan, treating everyone as an
         individual with a full life history.
       </p>
 
-      {/* Features */}
       <div className="about-features">
-        {FEATURES.map(({ title, desc }) => (
+        {FEATURES.map(({ title, desc }, i) => (
           <div key={title} className="about-feature-item">
-            <h4 className="about-feature-title">{title}</h4>
-            <p className="about-feature-desc">{desc}</p>
+            <span className="about-feature-index">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <div className="about-feature-content">
+              <h4 className="about-feature-title">{title}</h4>
+              <p className="about-feature-desc">{desc}</p>
+            </div>
           </div>
         ))}
       </div>

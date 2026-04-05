@@ -16,15 +16,13 @@
   transition:
     height var(--transition),
     background var(--transition),
-    border-color var(--transition),
     box-shadow var(--transition);
 }
 
 .navbar.scrolled {
   height: 60px;
-  background: rgba(255, 255, 255, 0.96);
+  background: var(--off-white);
   backdrop-filter: blur(14px);
-  border-bottom-color: var(--gray-100);
   box-shadow:
     0 1px 0 var(--gray-100),
     0 4px 24px color-mix(in srgb, var(--ink) 6%, transparent);

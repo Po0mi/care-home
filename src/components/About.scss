@@ -15,16 +15,16 @@
 .about-image-bleed {
   position: absolute;
   right: -2rem;
-  top: 15rem;
+  top: 5rem;
   bottom: 0;
-  width: 42%;
+  width: 40%;
   z-index: 1;
   overflow: hidden;
 }
 
 .about-image-inner {
   width: 100%;
-  height: 100%;
+  height: 110%;
   position: relative;
   display: flex;
   align-items: center;
@@ -74,7 +74,7 @@
 .about-heading-wrap {
   position: relative;
   z-index: 2;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
 }
 
 .about-heading {
@@ -103,12 +103,12 @@
 
 // ── Sub copy ───────────────────────────
 .about-sub {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 400;
   line-height: 1.8;
   color: var(--ink);
-  max-width: 100ch;
-  margin-bottom: clamp(2rem, 5vw, 3rem);
+  max-width: 130ch;
+  margin-bottom: clamp(1.1rem, 5vw, 1rem);
   position: relative;
   z-index: 2;
 }
@@ -135,7 +135,7 @@
   content: "";
   position: absolute;
   left: 0;
-  top: 0.7rem;
+  top: 0.6rem;
   width: 5px;
   height: 5px;
   border-radius: 50%;
@@ -145,13 +145,13 @@
 
 .about-feature-title {
   font-family: var(--font-display);
-  font-size: 1.08rem;
+  font-size: 0.95rem;
   font-weight: 500;
   color: var(--gray-700);
 }
 
 .about-feature-desc {
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   line-height: 1.65;
   color: var(--gray-700);
 }
@@ -202,6 +202,6 @@
     max-width: 100%;
   }
   .about-feature-item::before {
-    top: 0.75rem;
+    top: 0.6rem;
   }
 }

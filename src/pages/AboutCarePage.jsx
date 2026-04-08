@@ -11,7 +11,7 @@ const STATS = [
 const TEAM = [
   { initials: "AV", name: "Anthony Vanderslott", role: "Founder & Director" },
   { initials: "AH", name: "Anna Homer", role: "Registered Manager" },
-  { initials: "BG", name: "Beverly George", role: "Operations Manager" },
+  { initials: "BG", name: "Beverly George", role: "Operations Assistant" },
   { initials: "VD", name: "Veronica De Castro", role: "Team Leader" },
 ];
 
